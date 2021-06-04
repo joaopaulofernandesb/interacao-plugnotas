@@ -9,6 +9,7 @@ const UserSchema = new mongoose.Schema({
     status:{
         type: String,
         require: true,
+        default: "PENDENTE",
     }
 });
 
