@@ -1,11 +1,14 @@
 const express = require('express')
-const  consultaCep = require('../consultaCep')
-const db  = require('../database')
-const User = require('../models/user')
+const db  = require('./src/database/banco')
+const User = require('./src/models/user')
+const routes = require('./src/routes/routes')
 
 
 const app = express()
+
 app.use(express.json())
+app.use(routes)
+
 
 db.connect()
 

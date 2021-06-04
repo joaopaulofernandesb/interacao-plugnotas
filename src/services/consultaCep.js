@@ -1,5 +1,5 @@
 const axios = require('axios');
-const env = require('./config/config');
+const env = require('../config/config');
 
 async function consultaCep(cep) {
     // console.log("funcao consultaCep",cep)
@@ -18,4 +18,4 @@ async function consultaCep(cep) {
 }
 // consultaCep(87023499)
 
-module.exports = consultaCep;
+module.exports = {consultaCep}
