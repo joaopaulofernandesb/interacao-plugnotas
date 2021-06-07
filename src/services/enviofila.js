@@ -1,13 +1,37 @@
 const aws = require('aws-sdk')
 const env = require('../config/config');
+const {v4: uuidv4} = require('uuid')
 
-const envioFila = async (id) => {
-    DelaySeconds: 10
+const envioFila =  (id) => {
+    // console.log("enviafila", id)
+    const params = {
+    // DelaySeconds: 10,
     MessageAttributes: {
-        id:{id}
+      "Title": {
+        DataType: "String",
+        StringValue: "Id cadastro de cep no banco"
+      },
+      "Author": {
+        DataType: "String",
+        StringValue: "Alessandro"
+      },
+      "WeeksOn": {
+        DataType: "Number",
+        StringValue: "1"
+      },
+      "id":{
+        DataType: "String",
+        StringValue: id
+    },
+    },
+
+    MessageBody:JSON.stringify({id: id}),
+    QueueUrl: env.Url_Fila,
+    MessageGroupId: uuidv4(),
+    MessageDeduplicationId: uuidv4()
     }
-    MessageBody:""
-    QueueUrl: env.Url_Fila
+
+    return params 
 }
 
-module.export = { envioFila }
+module.exports = {envioFila}
