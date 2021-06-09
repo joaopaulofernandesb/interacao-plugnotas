@@ -1,17 +1,17 @@
 const sqs  = require('../config/aws')
 const User = require('../models/user')
-const {consultaCep} = require('../services/consultaCep')
 const  {envioFila}  = require('../services/enviofila')
 
 
 const cadastrarCep = async(req, res) => {
     try {
-        const dados = await consultaCep(req.body.cep)
+            const dados = req.body
+            console.log(dados)
 
             const data = await User.create(dados)
 
             const { id } = data
-            // console.log(id)
+            console.log(id)
 
             const params = envioFila(id)
 
@@ -21,7 +21,7 @@ const cadastrarCep = async(req, res) => {
                 if(err){
                     console.log("Error", err)
                 }else{
-                    console.log("Sucess", data.MessageId);
+                    console.log("Mensagem criada com Sucesso, Id:", data.MessageId);
                 }
             })
 

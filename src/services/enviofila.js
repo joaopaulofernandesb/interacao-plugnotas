@@ -1,4 +1,3 @@
-const aws = require('aws-sdk')
 const env = require('../config/config');
 const {v4: uuidv4} = require('uuid')
 

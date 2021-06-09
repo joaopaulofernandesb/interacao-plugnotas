@@ -10,7 +10,36 @@ const UserSchema = new mongoose.Schema({
         type: String,
         require: true,
         default: "PENDENTE",
-    }
+    },
+    data:{
+        logradouro: {
+            type: String
+        },
+        complemento: {
+            type: String
+        },
+        bairro: {
+            type: String
+        },
+        localidade: {
+            type: String
+        },
+        uf: {
+            type: String
+        },
+        ibge: {
+            type: String
+        },
+        gia: {
+            type: String
+        },
+        ddd: {
+            type: String
+        },
+        siafi: {
+            type: String
+        },
+    },
 });
 
 const User = mongoose.model('User', UserSchema);
