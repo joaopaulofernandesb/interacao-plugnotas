@@ -1,14 +1,14 @@
-const dotenv = require('dotenv')
+const dotenv = require('dotenv');
 
-dotenv.config()
+dotenv.config();
 
-const env = process.env
+const { env } = process;
 
 module.exports = {
-    Url: env.URL_API,
-    Url_Fila: env.URL_FILA,
-    accessKeyId: env.AWS_ACCESSKEY_ID,
-    secretAccessKey: env.AWS_SECRET_ACCESS_KEY,
-    region: env.AWS_REGION,
-    // token: env.AWS_SESSION_TOKEN
+  Url: env.URL_API,
+  Url_Fila: env.URL_FILA,
+  accessKeyId: env.AWS_ACCESSKEY_ID,
+  secretAccessKey: env.AWS_SECRET_ACCESS_KEY,
+  region: env.AWS_REGION,
+  // token: env.AWS_SESSION_TOKEN
 };

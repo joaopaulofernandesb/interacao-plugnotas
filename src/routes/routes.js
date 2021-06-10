@@ -1,9 +1,9 @@
-const { Router } = require('express')
-const Ceps = require('../controller/CepController')
+const { Router } = require('express');
+const Ceps = require('../controller/CepController');
 
-const routes = Router()
+const routes = Router();
 
-routes.post('/cadastro', Ceps.cadastrarCep)
-routes.get('/', Ceps.listarCep)
+routes.post('/cadastro', Ceps.cadastrarCep);
+routes.get('/', Ceps.listarCep);
 
-module.exports = routes
+module.exports = routes;

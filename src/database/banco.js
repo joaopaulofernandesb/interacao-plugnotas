@@ -1,16 +1,17 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-const connect = () =>{
-try{
+const connect = () => {
+  try {
     mongoose.connect('mongodb+srv://ale:013345@cluster0.8x3wq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useCreateIndex : true,
-        })
-}catch(error) {
-    console.log(error)
-} 
-}
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+    });
+  } catch (error) {
+    error.message = error;
+    // console.log(error);
+  }
+};
 // mongoose.Promise = global.Promise
 
-module.exports = { connect, mongoose }
+module.exports = { connect, mongoose };
