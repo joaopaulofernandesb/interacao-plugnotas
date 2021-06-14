@@ -10,5 +10,5 @@ module.exports = {
   accessKeyId: env.AWS_ACCESSKEY_ID,
   secretAccessKey: env.AWS_SECRET_ACCESS_KEY,
   region: env.AWS_REGION,
-  // token: env.AWS_SESSION_TOKEN
+  mongo: 'mongodb+srv://ale:013345@cluster0.8x3wq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
 };

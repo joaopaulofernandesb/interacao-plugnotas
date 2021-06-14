@@ -32,7 +32,7 @@ const makeFakeParams = () => ({
 
 describe('CepController', () => {
     test('should be able envioFila calls correct values', () => {
-        uuidv4.mockImplementation(() => '50fc62cc-3f83-4513-817a-183a80ad25fb');
+        uuidv4.mockImplementation(() => id);
         const result = envioFila(id)
         expect(result).toEqual(makeFakeParams())
     })

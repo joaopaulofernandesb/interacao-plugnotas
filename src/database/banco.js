@@ -1,17 +1,20 @@
 const mongoose = require('mongoose');
+const env = require('../config/config')
 
 const connect = () => {
   try {
-    mongoose.connect('mongodb+srv://ale:013345@cluster0.8x3wq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+    mongoose.connect(env.mongo, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
     });
   } catch (error) {
     error.message = error;
-    // console.log(error);
   }
 };
-// mongoose.Promise = global.Promise
 
-module.exports = { connect, mongoose };
+const disconnect = () => {
+    mongoose.disconnect()
+}
+
+module.exports = { connect, disconnect, mongoose };
