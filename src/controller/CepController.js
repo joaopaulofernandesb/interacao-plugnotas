@@ -7,6 +7,8 @@ const cadastrarCep = async (req, res) => {
   try {
     const dados = req.body;
 
+    console.log(dados)
+
     const data = await User.create(dados);
 
     const { id } = data;
