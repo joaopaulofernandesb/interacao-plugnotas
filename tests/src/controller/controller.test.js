@@ -6,11 +6,12 @@ const service = require('../../../src/services/enviofila')
 
 jest.mock('../../../src/config/aws')
 
+//Banco criado em memoria
 const url = process.env.MONGO_URL
 
 const makeHttpRequest = () => ({
     body: {
-        cep: '87025040'
+        cep: 87025040
     }
 })
 
@@ -23,6 +24,7 @@ describe('Controler', () => {
         db.connect(url)
     })
 
+    //limpa o banco
     beforeEach(async () =>{
         await User.deleteMany()
     })
@@ -31,17 +33,19 @@ describe('Controler', () => {
         db.disconnect()
     })
 
-    it('Cadastrar cep com valores de schema correto', async () =>{
+    //Verifica se o create esta sendo feito com estrutura certa
+    it('cadastrarCep com valores de schema correto', async () =>{
         const Userspy = jest.spyOn(User, 'create')
 
         await cadastrarCep(makeHttpRequest(), makeHttpResponse())
 
         expect(Userspy).toHaveBeenCalledWith({
-            cep: '87025040'
+            cep: 87025040
         })
     })
 
-    it('should cadastrarCep calls sendMessage correct values', async () => {
+    //Verifica se o envio da mensagem esta sendo chamado
+    it('Chamada de sendMessage dentro do cadastrarCep', async () => {
         const spy = jest.spyOn(sqs, 'sendMessage')
 
         await cadastrarCep(makeHttpRequest(), makeHttpResponse())

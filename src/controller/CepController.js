@@ -7,7 +7,12 @@ const cadastrarCep = async (req, res) => {
   try {
     const dados = req.body;
 
-    console.log(dados)
+    const {cep} = dados
+    console.log(cep.toString().length)
+
+   if(cep.toString().length !==8 || typeof cep !== 'number'){
+       return res.status(400).json({message: 'Favor informar 8 digitos numericos'})
+   }
 
     const data = await User.create(dados);
 
@@ -16,16 +21,18 @@ const cadastrarCep = async (req, res) => {
     const params = envioFila(id);
 
     sqs.sendMessage(params, (err, result) => {
-      if (err) {
+    if (err) {
         console.log('Error', err);
-      } else {
+    } else {
         console.log('Mensagem criada com Sucesso, Id:', result.MessageId);
-      }
+    }
     });
+
 
     return res.json(data);
   } catch (error) {
-    return res.json({ error: true, message: 'não foi possivel cadastrar o cep' });
+    console.log(error)
+    return res.status(400).json({ error: true, message: 'não foi possivel cadastrar o cep' });
   }
 };
 

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
   cep: {
-    type: String,
+    type: Number,
     unique: true,
     require: true,
   },
@@ -11,37 +11,9 @@ const UserSchema = new mongoose.Schema({
     require: true,
     default: 'PENDENTE',
   },
-  data: {
-    logradouro: {
-      type: String,
-    },
-    complemento: {
-      type: String,
-    },
-    bairro: {
-      type: String,
-    },
-    localidade: {
-      type: String,
-    },
-    uf: {
-      type: String,
-    },
-    ibge: {
-      type: String,
-    },
-    gia: {
-      type: String,
-    },
-    ddd: {
-      type: String,
-    },
-    siafi: {
-      type: String,
-    },
-  },
 });
 
 const User = mongoose.model('User', UserSchema);
 
 module.exports = User;
+

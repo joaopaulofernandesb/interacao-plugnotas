@@ -20,15 +20,17 @@ describe('Teste de rotas', () => {
         db.disconnect()
     })
 
+    //Verifica se a rota de cadastro esta correta.
     it('Rota POST /cadastro deve retornar status 200', async () =>{
         await supertest(app)
             .post('/cadastro')
             .send({
-                cep: '87020050'
+                cep: 87020050
             })
             .expect(200)
     })
 
+    //Verifica se a rota de listar esta correta.
     it('Rota GET / deve retornar 200', async () => {
         await supertest(app)
             .get('/')

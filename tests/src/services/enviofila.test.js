@@ -30,8 +30,9 @@ const makeFakeParams = () => ({
     MessageDeduplicationId: '50fc62cc-3f83-4513-817a-183a80ad25fb',
 })
 
+//Verifica se esta sendo enviado os dados certos para fila.
 describe('CepController', () => {
-    test('should be able envioFila calls correct values', () => {
+    test('deve enviar estrutura correta na função envioFila', () => {
         uuidv4.mockImplementation(() => id);
         const result = envioFila(id)
         expect(result).toEqual(makeFakeParams())
